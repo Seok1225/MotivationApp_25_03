@@ -40,7 +40,8 @@ public class MotivationController {
         System.out.printf("   id    |     source     |      body      \n");
         System.out.println("-".repeat(40));
 
-        for (Motivation motivation : motivations) {
+        for (int i = motivations.size() - 1; i >= 0; i--) {
+            Motivation motivation = motivations.get(i);
             System.out.printf("   %-5d | %-12s | %-15s\n",
                     motivation.getId(),
                     motivation.getSource().length() > 10 ? motivation.getSource().substring(0, 10) + "..." : motivation.getSource(),
@@ -58,7 +59,7 @@ public class MotivationController {
 
         int id;
         try {
-            id = Integer.parseInt(cmdParts[1]);
+           id = Integer.parseInt(cmdParts[1]);
         } catch (NumberFormatException e) {
             System.out.println("올바른 숫자를 입력하세요.");
             return;
