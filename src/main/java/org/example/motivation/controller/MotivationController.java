@@ -53,7 +53,7 @@ public class MotivationController {
 
     public void remove(String[] cmdParts) {
         if (cmdParts.length < 2) {
-            System.out.println("삭제할 motivation id를 입력하세요. (예: remove 3)");
+            System.out.println("삭제할 motivation id를 입력하세요. (예: remove 3, remove=3)");
             return;
         }
 

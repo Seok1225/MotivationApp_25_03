@@ -30,7 +30,7 @@ public class App {
                 continue;
             }
 
-            String[] cmdParts = cmd.split(" ", 2);
+            String[] cmdParts = cmd.split(" |\\?", 2);
             String action = cmdParts[0];
 
             switch (action) {
@@ -41,6 +41,9 @@ public class App {
                     motivationController.list();
                     break;
                 case "remove":
+                    if (cmdParts.length == 2 && cmdParts[1].startsWith("id=")) {
+                        cmdParts[1] = cmdParts[1].substring(3);
+                    }
                     motivationController.remove(cmdParts);
                     break;
                 default:
