@@ -46,6 +46,12 @@ public class App {
                     }
                     motivationController.remove(cmdParts);
                     break;
+                case "edit":
+                    if (cmdParts.length == 2 && cmdParts[1].startsWith("id=")) {
+                        cmdParts[1] = cmdParts[1].substring(3);
+                    }
+                    motivationController.edit(cmdParts);
+                    break;
                 default:
                     System.out.println("사용할 수 없는 명령어입니다.");
             }

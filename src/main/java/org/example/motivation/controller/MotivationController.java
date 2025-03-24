@@ -59,7 +59,7 @@ public class MotivationController {
 
         int id;
         try {
-           id = Integer.parseInt(cmdParts[1]);
+            id = Integer.parseInt(cmdParts[1]);
         } catch (NumberFormatException e) {
             System.out.println("올바른 숫자를 입력하세요.");
             return;
@@ -79,5 +79,61 @@ public class MotivationController {
             motivations.remove(toRemove);
             System.out.println(id + "번 motivation이 삭제되었습니다.");
         }
+    }
+
+    public void edit(String[] cmdParts) {
+        if (cmdParts.length < 2) {
+            System.out.println("수정할 motivation id를 입력하세요. (예: edit 3)");
+            return;
+        }
+
+        int id;
+        try {
+            id = Integer.parseInt(cmdParts[1]);
+        } catch (NumberFormatException e) {
+            System.out.println("올바른 숫자를 입력하세요.");
+            return;
+        }
+
+        Motivation toEdit = null;
+        for (Motivation motivation : motivations) {
+            if (motivation.getId() == id) {
+                toEdit = motivation;
+                break;
+            }
+        }
+
+        if (toEdit == null) {
+            System.out.printf("%d번 motivation이 존재하지 않습니다.\n", id);
+            return;
+        }
+
+        System.out.printf("기존 source: %s\n", toEdit.getSource());
+        System.out.printf("기존 body: %s\n", toEdit.getBody());
+
+        String newSource;
+        while (true) {
+            System.out.print("새로운 source: ");
+            newSource = sc.nextLine().trim();
+            if (!newSource.isEmpty()) {
+                break;
+            }
+            System.out.println("수정사항 source가 입력되지 않았습니다.");
+        }
+
+        String newBody;
+        while (true) {
+            System.out.print("새로운 body: ");
+            newBody = sc.nextLine().trim();
+            if (!newBody.isEmpty()) {
+                break;
+            }
+            System.out.println("수정사항 body가 입력되지 않았습니다.");
+        }
+
+        toEdit.setBody(newBody);
+        toEdit.setSource(newSource);
+
+        System.out.printf("%d번 motivation이 수정되었습니다.\n", id);
     }
 }

@@ -15,10 +15,6 @@ public class Motivation {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getBody() {
         return body;
     }
@@ -33,14 +29,5 @@ public class Motivation {
 
     public void setSource(String source) {
         this.source = source;
-    }
-
-    @Override
-    public String toString() {
-        return "Motivation{" +
-                "id=" + id +
-                ", body='" + body + '\'' +
-                ", source='" + source + '\'' +
-                '}';
     }
 }
